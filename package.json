@@ -1,0 +1,66 @@
+{
+  "name": "cf-email-alias-forwarder",
+  "version": "0.1.0",
+  "description": "Email aliases on your own domain with Cloudflare Email Routing, Workers KV and Amazon SES: rewrites headers safely and forwards to the real inbox.",
+  "license": "MIT",
+  "author": "Frame <frameprivacy@proton.me>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frameprivacy/cf-email-alias-forwarder.git"
+  },
+  "homepage": "https://github.com/frameprivacy/cf-email-alias-forwarder#readme",
+  "bugs": "https://github.com/frameprivacy/cf-email-alias-forwarder/issues",
+  "keywords": [
+    "cloudflare-workers",
+    "email-routing",
+    "email-alias",
+    "masked-email",
+    "amazon-ses",
+    "workers-kv",
+    "privacy"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./worker": {
+      "types": "./dist/worker.d.ts",
+      "default": "./dist/worker.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "aws4fetch": "^1.0.20"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.20.5",
+    "@vitest/coverage-v8": "^5.0.5",
+    "eslint": "^10.13.0",
+    "prettier": "^3.9.10",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.0.5"
+  }
+}

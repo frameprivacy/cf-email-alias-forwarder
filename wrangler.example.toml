@@ -1,0 +1,22 @@
+# Copy to wrangler.toml and fill in your own values. No secrets go in this file:
+# set SES_AWS_ACCESS_KEY_ID and SES_AWS_SECRET_ACCESS_KEY with `npx wrangler secret put`.
+name = "email-alias-forwarder"
+main = "src/worker.ts"
+compatibility_date = "2026-10-01"
+workers_dev = false
+
+[observability]
+enabled = true
+
+[[kv_namespaces]]
+binding = "ALIAS_MAP"
+id = "<your KV namespace id>"
+
+[vars]
+ALIAS_DOMAIN = "alias.example.com"
+SES_REGION = "us-east-1"
+MAX_FORWARD_BYTES = "10000000"
+# SPAM_DROP_SCORE = "5"
+# SES_CONFIGURATION_SET = "aliases"
+# FROM_LABEL = "via alias"
+# HEADER_PREFIX = "X-Alias-"
